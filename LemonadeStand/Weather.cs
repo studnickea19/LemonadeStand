@@ -12,6 +12,7 @@ namespace LemonadeStand
         public List<string> conditions = new List<string> { "Sunny", "Hazy", "Overcast", "Rainy" };
         public int dailyTemperature;
         public string dailyConditions;
+        public string todaysWeather;
 
         public Weather(Random rnd)
         {
@@ -33,6 +34,17 @@ namespace LemonadeStand
             return dailyConditions;
         }
 
+        public void GetDailyWeather(List<string> conditions)
+        {
+            GenerateTemp();
+            GenerateConditions(conditions);
+        }
+
+        public string DisplayDailyWeather()
+        {
+            todaysWeather = "Today's Forecast:\n Temperature:" + dailyTemperature + "\n Conditions:" + dailyConditions;
+            return todaysWeather;
+        }
 
         //TEST
         //public void DisplayTest()

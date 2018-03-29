@@ -19,15 +19,16 @@ namespace LemonadeStand
             weather = new Weather(rnd);
         }
 
-        public void RunGame()
+        public void StartGame()
         {
             //Game Display purpose
             player.SetDaysOfPlay();
+            player.PlayForDays(player.daysOfPlay);
             //Game Establish budget
             //Player Fill inventory
             //Game Generate weather
-            weather.GenerateTemp();
-            weather.GenerateConditions(weather.conditions);
+            weather.GetDailyWeather(weather.conditions);
+            weather.DisplayDailyWeather();
             //Player Set Price
             //Create customers//demand
             //Play Game
@@ -42,5 +43,6 @@ namespace LemonadeStand
             //day.DaysTest();
             
         }
+
     }
 }

@@ -8,7 +8,7 @@ namespace LemonadeStand
         {
             Console.WriteLine("Hello World!");
             Game game = new Game();
-            game.RunGame();
+            game.StartGame();
         }
     }
 

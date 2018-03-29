@@ -25,10 +25,27 @@ namespace LemonadeStand
             return daysOfPlay;
         }
 
-        public void DaysTest()
+        public void PlayForDays(int daysOfPlay)
         {
-            Message.DisplayMessage(daysOfPlay.ToString());
+            for (int d = 1; d <= daysOfPlay; d++)
+            {
+                if(d <= daysOfPlay)
+                {
+                    //Game game RunGame();
+                }
+                else
+                {
+                    //run formula to calculate total
+                }
+                    
+            }
         }
+
+        //TEST
+        //public void DaysTest()
+        //{
+        //    Message.DisplayMessage(daysOfPlay.ToString());
+        //}
     }
 }
 
