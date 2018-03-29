@@ -8,21 +8,21 @@ namespace LemonadeStand
     public class Game
     {
         Random rnd;
-        Day day;
+        Player player;
         Weather weather;
 
 
         public Game()
         {
             rnd = new Random();
-            day = new Day();
+            player = new Player();
             weather = new Weather(rnd);
         }
 
         public void RunGame()
         {
             //Game Display purpose
-            day.SetDaysOfPlay();
+            player.SetDaysOfPlay();
             //Game Establish budget
             //Player Fill inventory
             //Game Generate weather

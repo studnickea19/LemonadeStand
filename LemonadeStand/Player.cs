@@ -8,6 +8,7 @@ namespace LemonadeStand
     public class Player
     {
         //HAS A
+        public int daysOfPlay;
 
         public Player()
         {
@@ -15,14 +16,18 @@ namespace LemonadeStand
 
         //CAN DO
 
-        public int ChooseLengthOfPlay()
+        public int SetDaysOfPlay()
         {
-            Console.WriteLine("How long would you like to play? Please choose 7, 14, or 21 days");
-            string userInput = Console.ReadLine();
-            //TO DO: VALIDATE
-            int lengthOfPlay = Int32.Parse(userInput);
-            return lengthOfPlay;
+            Message.DisplayMessage("How many days would you like to play?");
+            string userInput = Message.GetUserInput();
+            //TO DO validate user input
+            daysOfPlay = Int32.Parse(userInput);
+            return daysOfPlay;
+        }
 
+        public void DaysTest()
+        {
+            Message.DisplayMessage(daysOfPlay.ToString());
         }
     }
 }
