@@ -5,19 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 namespace LemonadeStand
 {
-    public abstract class Day
+    public class Day
     {
         //HAS A
         Random rnd;
-        public int dayCount;
         Weather weather;
+        public int daysOfPlay;
 
         public Day()
         {
+            rnd = new Random();
             weather = new Weather(rnd);
         }
 
         //CAN DO
+        public int SetDaysOfPlay()
+        {
+            Message.DisplayMessage("How many days would you like to play?");
+            string userInput = Message.GetUserInput();
+            //TO DO validate user input
+            daysOfPlay = Int32.Parse(userInput);
+            return daysOfPlay;
+        }
+
+        public void DaysTest()
+        {
+            Message.DisplayMessage(daysOfPlay.ToString());
+        }
+
+
 
     }
 }

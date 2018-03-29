@@ -33,10 +33,12 @@ namespace LemonadeStand
             return dailyConditions;
         }
 
-        public void DisplayTest()
-        {
-            Message.DisplayMessage(dailyTemperature + "\n" + dailyConditions);
-        }
+
+        //TEST
+        //public void DisplayTest()
+        //{
+        //    Message.DisplayMessage(dailyTemperature + "\n" + dailyConditions);
+        //}
 
 
         //MOVE TO CUSTOMER

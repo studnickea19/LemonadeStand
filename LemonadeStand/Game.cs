@@ -8,19 +8,21 @@ namespace LemonadeStand
     public class Game
     {
         Random rnd;
+        Day day;
         Weather weather;
+
 
         public Game()
         {
             rnd = new Random();
+            day = new Day();
             weather = new Weather(rnd);
         }
 
         public void RunGame()
         {
-            
-
             //Game Display purpose
+            day.SetDaysOfPlay();
             //Game Establish budget
             //Player Fill inventory
             //Game Generate weather
@@ -29,12 +31,15 @@ namespace LemonadeStand
             //Player Set Price
             //Create customers//demand
             //Play Game
-                //Decrement inventory
-                //Increment budget
-                //Reset Ice
-                //Display earnings
-                //Increment day
-            weather.DisplayTest();
+            //Decrement inventory
+            //Increment budget
+            //Reset Ice
+            //Display earnings
+            //Increment day
+
+            //TESTS //working
+            //weather.DisplayTest();
+            //day.DaysTest();
             
         }
     }
