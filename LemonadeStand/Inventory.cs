@@ -11,6 +11,7 @@ namespace LemonadeStand
         public List<Lemon> lemons = new List<Lemon>();
         public List<Ice> icecubes = new List<Ice>();
         public List<Sugar> sugars = new List<Sugar>();
+        public List<Cup> cups = new List<Cup>();
 
         //CTOR
         public Inventory()
@@ -22,23 +23,7 @@ namespace LemonadeStand
         //put get methods in store class
 
 
-        public void AddLemons(int lemonQty, Wallet wallet)
-        {
-            for (int i = 1; i <= lemonQty; i++)
-            {
-                if(i<=lemonQty)
-                {
 
-                    lemons.Add(new Lemon());
-                }
-                else
-                {
-                    return;
-                }
-            }
-            wallet.SpendMoney(lemonQty, Lemon.lemonPrice);
-
-        }
 
 
 

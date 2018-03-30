@@ -14,10 +14,17 @@ namespace LemonadeStand
         public Day(Random rnd)
         {
             this.rnd = rnd;
-            weather = new Weather();
+            weather = new Weather(rnd);
         }
 
         //CAN DO
+        public void GetDailyWeather(List<string> conditions)
+        {
+            weather.GetTemperature();
+            weather.GetConditions(conditions);
+
+        }
+
 
 
 

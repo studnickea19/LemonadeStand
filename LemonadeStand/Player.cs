@@ -8,8 +8,8 @@ namespace LemonadeStand
     public class Player
     {
         //HAS A
-        Inventory inventory;
-        Wallet wallet;
+        public Inventory inventory;
+        public Wallet wallet;
 
         public Player()
         {
@@ -42,7 +42,7 @@ namespace LemonadeStand
                     return;
                 }
             }
-            wallet.SpendMoney(lemonQty, Lemon.lemonPrice);
+            wallet.SpendMoney(lemonQty, Lemon.itemPrice);
 
         }
 

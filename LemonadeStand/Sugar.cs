@@ -7,10 +7,10 @@ namespace LemonadeStand
 {
     public class Sugar : Item
     {
-        public static double itemPrice = .23;     //each
 
         public Sugar()
         {
+            this.itemPrice = .23;
         }
     }
 }

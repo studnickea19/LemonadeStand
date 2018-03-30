@@ -7,9 +7,10 @@ namespace LemonadeStand
 {
     public class Ice : Item
     {
-        public static double itemPrice = .03;   //each
+
         public Ice()
         {
+            this.itemPrice = .03;
         }
     }
 }

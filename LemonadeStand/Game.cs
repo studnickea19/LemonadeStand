@@ -27,6 +27,7 @@ namespace LemonadeStand
         public void StartGame()
         {
             //TO DO: Game Display purpose
+            //Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.")
             int daysOfPlay = player.SetDaysOfPlay();
             PlayForDays(daysOfPlay);
         }
@@ -48,10 +49,11 @@ namespace LemonadeStand
             //Message.DisplayMessage(todaysWeather);
 
             //Game Establish budget
-            //Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.")
+            Message.DisplayMessage("You have $" + player.wallet.balance);
 
             //Player Fill inventory
-            //store.GetItems();
+            store.GetItems();
+            Message.DisplayMessage("You now have $" + player.wallet.balance);
 
 
             //Player set recipe
