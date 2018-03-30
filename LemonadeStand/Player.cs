@@ -8,10 +8,13 @@ namespace LemonadeStand
     public class Player
     {
         //HAS A
-        public int daysOfPlay;
+        Inventory inventory;
+        Wallet wallet;
 
         public Player()
         {
+            inventory = new Inventory();
+            wallet = new Wallet();
         }
 
         //CAN DO
@@ -21,32 +24,36 @@ namespace LemonadeStand
             Message.DisplayMessage("How many days would you like to play?");
             string userInput = Message.GetUserInput();
             //TO DO validate user input
-            daysOfPlay = Int32.Parse(userInput);
+            int daysOfPlay = Int32.Parse(userInput);
             return daysOfPlay;
         }
 
-        public void PlayForDays(int daysOfPlay)
+        public void AddLemons(int lemonQty, Wallet wallet)
         {
-            for (int d = 1; d <= daysOfPlay; d++)
+            for (int i = 1; i <= lemonQty; i++)
             {
-                if(d <= daysOfPlay)
+                if (i <= lemonQty)
                 {
-                    //Game game RunGame();
+
+                    inventory.lemons.Add(new Lemon());
                 }
                 else
                 {
-                    //run formula to calculate total
+                    return;
                 }
-                    
             }
+            wallet.SpendMoney(lemonQty, Lemon.lemonPrice);
+
         }
 
-        //TEST
-        //public void DaysTest()
-        //{
-        //    Message.DisplayMessage(daysOfPlay.ToString());
-        //}
+
     }
 }
+
+//TEST
+//public void DaysTest()
+//{
+//    Message.DisplayMessage(daysOfPlay.ToString());
+//}
 
 

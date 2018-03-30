@@ -7,42 +7,76 @@ namespace LemonadeStand
 {
     public class Game
     {
+        //HAS A________________
         Random rnd;
         Player player;
-        Weather weather;
+        Day day;
+        Store store;
 
-
+        //CTOR__________________
         public Game()
         {
             rnd = new Random();
             player = new Player();
-            weather = new Weather(rnd);
+            day = new Day(rnd);
+            store = new Store();
+
         }
 
+        //CAN DO________________
         public void StartGame()
         {
-            //Game Display purpose
-            player.SetDaysOfPlay();
-            player.PlayForDays(player.daysOfPlay);
-            //Game Establish budget
-            //Player Fill inventory
+            //TO DO: Game Display purpose
+            int daysOfPlay = player.SetDaysOfPlay();
+            PlayForDays(daysOfPlay);
+        }
+
+        public void PlayForDays(int daysOfPlay)
+        {
+            for (int d = 1; d <= daysOfPlay; d++)
+            {
+                    RunGame();   
+            }
+            //TO DO: run formula to calculate total
+            
+        }
+
+        public void RunGame()
+        {
             //Game Generate weather
-            weather.GetDailyWeather(weather.conditions);
-            weather.DisplayDailyWeather();
+            //DisplayDailyWeather();
+            //Message.DisplayMessage(todaysWeather);
+
+            //Game Establish budget
+            //Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.")
+
+            //Player Fill inventory
+            //store.GetItems();
+
+
+            //Player set recipe
+            //TO DO: QTY of each items
+            //TO DO: Decrement inventory
+
             //Player Set Price
             //Create customers//demand
-            //Play Game
-            //Decrement inventory
             //Increment budget
             //Reset Ice
             //Display earnings
-            //Increment day
 
             //TESTS //working
             //weather.DisplayTest();
-            //day.DaysTest();
-            
+            //int lemonQty = inventory.GetLemons();
+            //inventory.AddLemons(lemonQty, wallet);
+            //Console.WriteLine(wallet.balance);
         }
+
+        //public string DisplayDailyWeather(Day day)
+        //{
+        //    day.GetDailyWeather();
+        //    string todaysWeather = "Today's Forecast:\n Temperature:" + day.weather.dailyTemperature + "\n Conditions:" + weather.dailyConditions;
+        //    return todaysWeather;
+        //}
 
     }
 }

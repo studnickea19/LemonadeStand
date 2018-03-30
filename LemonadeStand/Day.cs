@@ -10,12 +10,11 @@ namespace LemonadeStand
         //HAS A
         Random rnd;
         Weather weather;
-        public int daysOfPlay;
 
-        public Day()
+        public Day(Random rnd)
         {
-            rnd = new Random();
-            weather = new Weather(rnd);
+            this.rnd = rnd;
+            weather = new Weather();
         }
 
         //CAN DO
