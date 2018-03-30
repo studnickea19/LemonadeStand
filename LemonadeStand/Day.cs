@@ -9,7 +9,7 @@ namespace LemonadeStand
     {
         //HAS A
         Random rnd;
-        Weather weather;
+        public Weather weather;
 
         public Day(Random rnd)
         {

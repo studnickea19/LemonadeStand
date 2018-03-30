@@ -10,7 +10,7 @@ namespace LemonadeStand
         //HAS A________________
         Random rnd;
         Player player;
-        Day day;
+        public Day day;
         Store store;
 
         //CTOR__________________
@@ -45,15 +45,15 @@ namespace LemonadeStand
         public void RunGame()
         {
             //Game Generate weather
-            //DisplayDailyWeather();
-            //Message.DisplayMessage(todaysWeather);
+            string todaysWeather = DisplayDailyWeather(day.weather.conditions);
+            Message.DisplayMessage(todaysWeather);
 
             //Game Establish budget
             Message.DisplayMessage("You have $" + player.wallet.balance);
 
             //Player Fill inventory
-            store.GetItems();
-            Message.DisplayMessage("You now have $" + player.wallet.balance);
+            //store.GetItems();
+            //Message.DisplayMessage("You now have $" + player.wallet.balance);
 
 
             //Player set recipe
@@ -73,12 +73,12 @@ namespace LemonadeStand
             //Console.WriteLine(wallet.balance);
         }
 
-        //public string DisplayDailyWeather(Day day)
-        //{
-        //    day.GetDailyWeather();
-        //    string todaysWeather = "Today's Forecast:\n Temperature:" + day.weather.dailyTemperature + "\n Conditions:" + weather.dailyConditions;
-        //    return todaysWeather;
-        //}
+        public string DisplayDailyWeather(List<string> conditions)
+        {
+            day.GetDailyWeather(conditions);
+            string todaysWeather = "Today's Forecast:\n Temperature:" + day.weather.dailyTemperature + "\n Conditions:" + day.weather.dailyConditions;
+            return todaysWeather;
+        }
 
     }
 }
