@@ -128,6 +128,12 @@ namespace LemonadeStand
             double pricePerCup = Double.Parse(userInput);
             return pricePerCup;
         }
+
+        public double SellLemonade(double pricePerCup)
+        {
+            wallet.balance += pricePerCup;
+            return wallet.balance;
+        }
     }
 }
 

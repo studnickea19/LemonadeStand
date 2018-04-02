@@ -9,7 +9,7 @@ namespace LemonadeStand
     {
         //HAS A
         Random rnd;
-        public List<string> conditions = new List<string> { "Sunny", "Hazy", "Overcast", "Rainy" };
+        public List<string> conditions = new List<string> { "sunny", "hazy", "overcast", "rainy" };
         public int dailyTemperature;
         public string dailyConditions;
 

@@ -21,6 +21,7 @@ namespace LemonadeStand
             player = new Player();
             day = new Day(rnd);
             store = new Store();
+            customer = new HighDemandCustomer();
 
         }
 
@@ -39,7 +40,6 @@ namespace LemonadeStand
             for (int d = 1; d <= daysOfPlay; d++)
             {
                 RunGame();
-                Message.DisplayMessage("Your current balance is: $" + player.wallet.balance);
 
             }
             player.wallet.GetFinalBalance(player.wallet.balance);
@@ -63,13 +63,16 @@ namespace LemonadeStand
             player.inventory.pitcher.ShowRecipe();
             player.inventory.pitcher.GetNewRecipe();
             //Player Set Price
-            player.SetPrice();
+            double pricePerCup = player.SetPrice();
             //player.inventory.GetNewPitcher(player.inventory.pitcher);
 
             //Create customers//demand
             //Increment budget
             //Reset Ice
+            MeltIce();
             //Display earnings
+            Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
+
 
         
 
@@ -93,6 +96,12 @@ namespace LemonadeStand
             day.GetDailyWeather(conditions);
             string todaysWeather = "Today's Forecast:\n Temperature:" + day.weather.dailyTemperature + "\n Conditions:" + day.weather.dailyConditions;
             return todaysWeather;
+        }
+
+        public List<Ice> MeltIce()
+        {
+            player.inventory.icecubes.Clear();
+            return player.inventory.icecubes;
         }
 
         public void PlayAgain(string start)

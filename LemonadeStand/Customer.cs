@@ -12,8 +12,9 @@ namespace LemonadeStand
         }
 
         //CAN DO
-        public abstract int NewDemand();
-        public abstract int BuyLemonade();
+        public abstract int DemandForTemperature(Weather weather, int demand);
+        public abstract int DemandForConditions(Weather weather, int demand);
+        public abstract void BuyLemonade(Player player, int demand);
 
     }
 }
