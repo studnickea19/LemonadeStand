@@ -39,7 +39,6 @@ namespace LemonadeStand
                     RunGame();   
             }
             //TO DO: run formula to calculate total
-            
         }
 
         public void RunGame()
@@ -52,13 +51,19 @@ namespace LemonadeStand
             Message.DisplayMessage("You have $" + player.wallet.balance);
 
             //Player Fill inventory
-            //store.GetItems();
-            //Message.DisplayMessage("You now have $" + player.wallet.balance);
+            store.GetItems();
+            player.AddIce(store.iceQty, player.wallet);
+            player.AddCups(store.cupQty, player.wallet);
+            player.AddSugar(store.sugarQty, player.wallet);
+            player.AddLemons(store.lemonQty, player.wallet);
+            Message.DisplayMessage("You now have $" + player.wallet.balance);
+            Console.WriteLine(player.inventory.cups.Count + player.inventory.icecubes.Count + player.inventory.lemons.Count + player.inventory.sugars.Count);
 
 
             //Player set recipe
-            //TO DO: QTY of each items
-            //TO DO: Decrement inventory
+            player.inventory.pitcher.GetRecipe();
+            player.inventory.UpdateInventory(player.inventory.pitcher);
+            Console.WriteLine(player.inventory.cups.Count + player.inventory.icecubes.Count + player.inventory.lemons.Count + player.inventory.sugars.Count);
 
             //Player Set Price
             //Create customers//demand
@@ -79,6 +84,9 @@ namespace LemonadeStand
             string todaysWeather = "Today's Forecast:\n Temperature:" + day.weather.dailyTemperature + "\n Conditions:" + day.weather.dailyConditions;
             return todaysWeather;
         }
+
+
+            
 
     }
 }

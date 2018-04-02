@@ -10,7 +10,7 @@ namespace LemonadeStand
 
         public Cup()
         {
-            this.itemPrice = .20;
+            this.itemPrice = .10;
         }
     }
 }

@@ -3,6 +3,10 @@ namespace LemonadeStand
 {
     public class Store
     {
+        public int lemonQty;
+        public int sugarQty;
+        public int iceQty;
+        public int cupQty;
 
         public Store()
         {
@@ -13,7 +17,7 @@ namespace LemonadeStand
             Message.DisplayMessage("How many lemons would you like to buy?"); 
             string userInput = Message.GetUserInput();
             //TO DO: VALIDATE
-            int lemonQty = Int32.Parse(userInput);
+            lemonQty = Int32.Parse(userInput);
             return lemonQty;
         }
 
@@ -22,16 +26,16 @@ namespace LemonadeStand
             Message.DisplayMessage("How much ice would you like to buy?"); 
             string userInput = Message.GetUserInput();
             //TO DO: VALIDATE
-            int iceQty = Int32.Parse(userInput);
+            iceQty = Int32.Parse(userInput);
             return iceQty;
         }
 
         public int GetSugar()
         {
-            Message.DisplayMessage("How much sugar would you like to buy?"); 
+            Message.DisplayMessage("How many cups of sugar would you like to buy?"); 
             string userInput = Message.GetUserInput();
             //TO DO: VALIDATE
-            int sugarQty = Int32.Parse(userInput);
+            sugarQty = Int32.Parse(userInput);
             return sugarQty;
         }
 
@@ -40,7 +44,7 @@ namespace LemonadeStand
             Message.DisplayMessage("How many cups would you like to buy?");
             string userInput = Message.GetUserInput();
             //TO DO: VALIDATE
-            int cupQty = Int32.Parse(userInput);
+            cupQty = Int32.Parse(userInput);
             return cupQty;
         }
 

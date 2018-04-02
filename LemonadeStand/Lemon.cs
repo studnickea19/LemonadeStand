@@ -10,7 +10,7 @@ namespace LemonadeStand
 
         public Lemon()
         {
-            this.itemPrice = .47;
+            this.itemPrice = .37;
         }
 
     }
