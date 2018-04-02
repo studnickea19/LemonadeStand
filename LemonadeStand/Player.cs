@@ -10,7 +10,6 @@ namespace LemonadeStand
         //HAS A
         public Inventory inventory;
         public Wallet wallet;
-        Lemon lemon;
 
         public Player()
         {
@@ -31,19 +30,22 @@ namespace LemonadeStand
 
         public void AddLemons(int lemonQty, Wallet wallet)
         {
+            double price = 0;
             for (int i = 1; i <= lemonQty; i++)
             {
                 if (i <= lemonQty)
                 {
-
-                    inventory.lemons.Add(new Lemon());
+                    Lemon lemon = new Lemon();
+                    inventory.lemons.Add(lemon);
+                    price += lemon.itemPrice;
                 }
                 else
                 {
                     return;
                 }
             }
-            wallet.SpendMoney(lemonQty, lemon.itemPrice);
+            wallet.SpendMoney(price);
+
 
         }
 

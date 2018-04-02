@@ -20,9 +20,9 @@ namespace LemonadeStand
         //CAN DO
         //spend function - take in costs
 
-        public double SpendMoney(int quantity, double cost)
+        public double SpendMoney(double totalCost)
         {
-            balance -= quantity * cost;
+            balance -= totalCost;
             return balance;
         }
 
