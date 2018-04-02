@@ -38,10 +38,6 @@ namespace LemonadeStand
             {
                 icecubes.RemoveAt(0);
             }
-            //for (int i = 1; i <= 10; i++)
-            //{
-            //    cups.RemoveAt(0);
-            //}
         }
 
 

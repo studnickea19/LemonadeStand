@@ -10,7 +10,7 @@ namespace LemonadeStand
 
         public Pitcher()
         {
-            
+
         }
 
 
@@ -49,6 +49,25 @@ namespace LemonadeStand
             SetIce();
         }
 
+        public void ShowRecipe()
+        {
+            Message.DisplayMessage(String.Format("Your current recipe has {0} lemons, {1} cups of sugar, and {2} ice cubes", lemonQty, sugarQty, iceQty));
+        }
+
+        public void GetNewRecipe()
+        {
+            Message.DisplayMessage("Would you like to change your recipe? YES or NO");
+            string userInput = Message.GetUserInput().ToLower();
+            if( userInput == "yes")
+            {
+                GetRecipe();
+            }
+            //else
+            //{
+            //    SetPrice();
+            //}
+
+        }
     }
 }
 

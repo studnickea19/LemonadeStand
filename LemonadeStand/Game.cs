@@ -12,6 +12,7 @@ namespace LemonadeStand
         Player player;
         public Day day;
         Store store;
+        Customer customer;
 
         //CTOR__________________
         public Game()
@@ -27,8 +28,8 @@ namespace LemonadeStand
         public void StartGame()
         {
             //TO DO: Game Display purpose
-            //Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.")
             int daysOfPlay = player.SetDaysOfPlay();
+            //Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.")
             PlayForDays(daysOfPlay);
 
         }
@@ -41,36 +42,35 @@ namespace LemonadeStand
                 Message.DisplayMessage("Your current balance is: $" + player.wallet.balance);
 
             }
-            //TO DO: run formula to calculate total
+            player.wallet.GetFinalBalance(player.wallet.balance);
         }
 
         public void RunGame()
         {
             //Game Generate weather
-            //string todaysWeather = DisplayDailyWeather(day.weather.conditions);
-            //Message.DisplayMessage(todaysWeather);
+            string todaysWeather = DisplayDailyWeather(day.weather.conditions);
+            Message.DisplayMessage(todaysWeather);
 
-            ////Game Establish budget
-            //Message.DisplayMessage("You have $" + player.wallet.balance);
+            //Player Fill inventory
+            store.GetItems();
+            player.AddIce(store.iceQty, player.wallet);
+            player.AddCups(store.cupQty, player.wallet);
+            player.AddSugar(store.sugarQty, player.wallet);
+            player.AddLemons(store.lemonQty, player.wallet);
+            Message.DisplayMessage("New balance: $" + player.wallet.balance);
 
-            ////Player Fill inventory
-            //store.GetItems();
-            //player.AddIce(store.iceQty, player.wallet);
-            //player.AddCups(store.cupQty, player.wallet);
-            //player.AddSugar(store.sugarQty, player.wallet);
-            //player.AddLemons(store.lemonQty, player.wallet);
-            //Message.DisplayMessage("New balance: $" + player.wallet.balance);
-
-            ////Player set recipe
-            //player.inventory.pitcher.GetRecipe();
-            ////Player Set Price
-            //player.SetPrice();
-            ////player.inventory.GetNewPitcher(player.inventory.pitcher);
+            //Player set recipe
+            player.inventory.pitcher.ShowRecipe();
+            player.inventory.pitcher.GetNewRecipe();
+            //Player Set Price
+            player.SetPrice();
+            //player.inventory.GetNewPitcher(player.inventory.pitcher);
 
             //Create customers//demand
             //Increment budget
             //Reset Ice
             //Display earnings
+
         
 
             //TESTS //working

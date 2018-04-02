@@ -19,7 +19,6 @@ namespace LemonadeStand
 
         //CAN DO
         //spend function - take in costs
-
         public double SpendMoney(double totalCost)
         {
             balance -= totalCost;
@@ -31,6 +30,26 @@ namespace LemonadeStand
         {
             balance += quantity * cost;
             return balance;
+        }
+
+        public void GetFinalBalance(double balance)
+        {
+            double finalBalance = 20 - balance;
+
+            if(finalBalance == 0)
+            {
+                Message.DisplayMessage("It's a wash");
+            }
+
+            else if(finalBalance > 0)
+            {
+                Message.DisplayMessage("You made money! :) Your final balance is $ " + finalBalance);
+            }
+
+            else
+            {
+                Message.DisplayMessage("You lost money :( Your final balance is $ " + finalBalance);
+            }
         }
 
     }
