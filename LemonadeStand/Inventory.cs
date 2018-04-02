@@ -24,7 +24,7 @@ namespace LemonadeStand
 
         //put get methods in store class
 
-        public void UpdateInventory(Pitcher pitcher)
+        public void GetNewPitcher(Pitcher pitcher)
         {
             for (int i = 1; i <= pitcher.lemonQty; i++)
             {

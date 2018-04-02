@@ -21,11 +21,23 @@ namespace LemonadeStand
 
         public int SetDaysOfPlay()
         {
+            int daysOfPlay;
             Message.DisplayMessage("How many days would you like to play?");
             string userInput = Message.GetUserInput();
-            //TO DO validate user input
-            int daysOfPlay = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+
+            if (check == true)
+            {
+                daysOfPlay = Int32.Parse(userInput);
+
+            }
+            else
+            {
+                return SetDaysOfPlay();
+
+            }
             return daysOfPlay;
+
         }
 
         public void AddLemons(int lemonQty, Wallet wallet)
@@ -106,6 +118,15 @@ namespace LemonadeStand
             {
                 Message.DisplayMessage("You don't have enough money! Remaining balace: " + wallet.balance);
             }
+        }
+
+        public double SetPrice()
+        {
+            Message.DisplayMessage("How much would you like to charge per cup?");
+            string userInput = Message.GetUserInput();
+            //TO DO: VALIDATE
+            double pricePerCup = Double.Parse(userInput);
+            return pricePerCup;
         }
     }
 }

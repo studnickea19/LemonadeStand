@@ -17,5 +17,22 @@ namespace LemonadeStand
         {
             return Console.ReadLine();
         }
+
+        public static bool CheckIntegerInput(string userInput)
+        {
+            int value;
+            bool isInteger;
+
+            if (int.TryParse(userInput, out value) && value >= 0)
+            {
+                isInteger = true;
+            }
+            else
+            {
+                isInteger = false;
+                Message.DisplayMessage("Invalid input! Please enter a number");
+            }
+            return isInteger;
+        }
     }
 }

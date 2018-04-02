@@ -16,8 +16,17 @@ namespace LemonadeStand
         {
             Message.DisplayMessage("How many lemons would you like to buy?"); 
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            lemonQty = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+
+            if(check == true)
+            {
+                lemonQty = Int32.Parse(userInput);  
+            }
+            else
+            {
+                GetLemons();
+            }
+
             return lemonQty;
         }
 
@@ -25,8 +34,17 @@ namespace LemonadeStand
         {
             Message.DisplayMessage("How much ice would you like to buy?"); 
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            iceQty = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+
+            if (check == true)
+            {
+                iceQty = Int32.Parse(userInput);
+            }
+            else
+            {
+                GetIce();
+            }
+
             return iceQty;
         }
 
@@ -34,8 +52,17 @@ namespace LemonadeStand
         {
             Message.DisplayMessage("How many cups of sugar would you like to buy?"); 
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            sugarQty = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+
+            if (check == true)
+            {
+                sugarQty = Int32.Parse(userInput);
+            }
+            else
+            {
+                GetSugar();
+            }
+
             return sugarQty;
         }
 
@@ -43,9 +70,18 @@ namespace LemonadeStand
         {
             Message.DisplayMessage("How many cups would you like to buy?");
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            cupQty = Int32.Parse(userInput);
-            return cupQty;
+            bool check = Message.CheckIntegerInput(userInput);
+
+            if (check == true)
+            {
+                cupQty = Int32.Parse(userInput);
+            }
+            else
+            {
+                GetCups();
+            }
+
+            return iceQty;
         }
 
         public void GetItems()
