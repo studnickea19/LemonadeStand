@@ -7,9 +7,11 @@ namespace LemonadeStand
         public int sugarQty;
         public int iceQty;
         public int cupQty;
+        Player player;
 
-        public Store()
+        public Store(Player player)
         {
+            this.player = player;
         }
 
         public int GetLemons()
@@ -84,12 +86,5 @@ namespace LemonadeStand
             return iceQty;
         }
 
-        public void GetItems()
-        {
-            GetLemons();
-            GetSugar();
-            GetIce();
-            GetCups();
-        }
     }
 }

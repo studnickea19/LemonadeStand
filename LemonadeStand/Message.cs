@@ -34,5 +34,6 @@ namespace LemonadeStand
             }
             return isInteger;
         }
+
     }
 }

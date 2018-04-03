@@ -12,27 +12,23 @@ namespace LemonadeStand
         Player player;
         public Day day;
         Store store;
-        Customer customer;
 
         //CTOR__________________
         public Game()
         {
             rnd = new Random();
             player = new Player();
-            day = new Day(rnd);
-            store = new Store();
-            customer = new HighDemandCustomer(player);
-            Console.WriteLine(customer.demand);
-            //customer = new MidDemandCustomer(player);
-            //customer = new LowDemandCustomer(player);
+            day = new Day(rnd, player);
+            store = new Store(player);
         }
 
         //CAN DO________________
         public void StartGame()
         {
             //TO DO: Game Display purpose
+            day.AddCustomerTypes();
             int daysOfPlay = player.SetDaysOfPlay();
-            //Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.")
+            Message.DisplayMessage("You have $20 to start with. Buy items to fill your inventory.");
             PlayForDays(daysOfPlay);
 
         }
@@ -54,33 +50,38 @@ namespace LemonadeStand
             Message.DisplayMessage(todaysWeather);
 
             //Player Fill inventory
-            //store.GetItems();
-            //player.AddIce(store.iceQty, player.wallet);
-            //player.AddCups(store.cupQty, player.wallet);
-            //player.AddSugar(store.sugarQty, player.wallet);
-            //player.AddLemons(store.lemonQty, player.wallet);
-            //Message.DisplayMessage("New balance: $" + player.wallet.balance);
+            Message.DisplayMessage(String.Format("Your current inventory is {0} lemons, {1} cups of sugar, and {2} cups", player.inventory.lemons.Count, player.inventory.sugars.Count, player.inventory.cups.Count));
+            store.GetLemons();
+            player.AddLemons(store.lemonQty, player.wallet);
+            Message.DisplayMessage("New balance: $" + player.wallet.balance);
+            store.GetSugar();
+            player.AddSugar(store.sugarQty, player.wallet);
+            Message.DisplayMessage("New balance: $" + player.wallet.balance);
+            store.GetIce();
+            player.AddIce(store.iceQty, player.wallet);
+            Message.DisplayMessage("New balance: $" + player.wallet.balance);
+            store.GetCups();
+            player.AddCups(store.cupQty, player.wallet);
+            Message.DisplayMessage("New balance: $" + player.wallet.balance);
 
-            ////Player set recipe
-            //ShowRecipe();
-            //GetNewRecipe(player);
-            ////Player Set Price
+            //Player set recipe
+            ShowRecipe();
+            GetNewRecipe(player);
+
+            //Player Set Price
             player.SetPrice();
-            customer.demand = customer.DemandForTemperature(day.weather, customer.demand); 
-            customer.demand = customer.DemandForConditions(day.weather, customer.demand);
-            customer.demand = customer.DemandForPrice(player, customer.demand);
-            Message.DisplayMessage("This Customer Demand: " + customer.demand);
-            ////player.inventory.GetNewPitcher(player.inventory.pitcher);
 
-            ////Create customers//demand
-            ////Increment budget
-            ////Reset Ice
-            //MeltIce();
+            //Create customers//demand
+            int customerQty = day.GetCustomerQty();
+            day.GenerateCustomer(customerQty);
+            day.GetDemand();
+
+            //player.inventory.GetNewPitcher(player.inventory.pitcher);
+
+            //Reset Ice
+            MeltIce();
             ////Display earnings
-            //Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
-
-
-        
+            Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
 
             //TESTS //working
             //weather.DisplayTest();
@@ -95,7 +96,7 @@ namespace LemonadeStand
             //string userInput = Console.ReadLine();
             //bool isInteger = Message.CheckIntegerInput(userInput);
             //Console.WriteLine(isInteger);
-
+            //Message.DisplayMessage("This Customer Demand: " + customer.demand);
             //TEST CUSTOMER DEMAND
         }
 
@@ -110,6 +111,7 @@ namespace LemonadeStand
         public List<Ice> MeltIce()
         {
             player.inventory.icecubes.Clear();
+            Message.DisplayMessage("Your remaining ice has melted.");
             return player.inventory.icecubes;
         }
 
@@ -145,9 +147,14 @@ namespace LemonadeStand
             {
                 GetRecipe();
             }
-            else
+            else if (userInput == "no")
             {
                 player.SetPrice();
+            }
+            else
+            {
+                Message.DisplayMessage("Invalid input!");
+                GetNewRecipe(player);
             }
 
         }

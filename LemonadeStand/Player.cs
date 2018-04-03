@@ -50,8 +50,7 @@ namespace LemonadeStand
                     inventory.lemons.Add(lemon);
                     price += lemon.itemPrice;
             }
-            bool haveMoney = CheckWallet(price, wallet);
-            AccessWallet(haveMoney, price);
+            CheckWallet(price, wallet);
         }
 
         public void AddCups(int cupQty, Wallet wallet)
@@ -63,8 +62,7 @@ namespace LemonadeStand
                     inventory.cups.Add(cup);
                     price += cup.itemPrice;
             }
-            bool haveMoney = CheckWallet(price, wallet);
-            AccessWallet(haveMoney, price);
+            CheckWallet(price, wallet);
 
         }
 
@@ -77,8 +75,7 @@ namespace LemonadeStand
                     inventory.sugars.Add(sugar);
                     price += sugar.itemPrice;
             }
-            bool haveMoney = CheckWallet(price, wallet);
-            AccessWallet(haveMoney, price);
+            CheckWallet(price, wallet);
         }
 
         public void AddIce(int iceQty, Wallet wallet)
@@ -90,31 +87,16 @@ namespace LemonadeStand
                     inventory.icecubes.Add(ice);
                     price += ice.itemPrice;
             }
-            bool haveMoney = CheckWallet(price, wallet);
-            AccessWallet(haveMoney, price);
+            CheckWallet(price, wallet);
+
         }
 
-        public bool CheckWallet(double price, Wallet wallet)
+        public void CheckWallet(double price, Wallet wallet)
         {
-            bool haveMoney;
             if (price <= wallet.balance)
-            {
-                haveMoney = true;
-            }
-            else
-            {
-                haveMoney = false;
-            }
-            return haveMoney; 
-        }
-
-        public void AccessWallet(bool haveMoney, double price)
-        {
-            if(haveMoney == true)
             {
                 wallet.SpendMoney(price); 
             }
-
             else
             {
                 Message.DisplayMessage("You don't have enough money! Remaining balace: " + wallet.balance);
@@ -134,6 +116,7 @@ namespace LemonadeStand
             wallet.balance += pricePerCup;
             return wallet.balance;
         }
+
     }
 }
 

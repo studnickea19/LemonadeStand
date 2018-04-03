@@ -34,7 +34,7 @@ namespace LemonadeStand
 
         public void GetFinalBalance(double balance)
         {
-            double finalBalance = 20 - balance;
+            double finalBalance = 20 - (20 - balance);
 
             if(finalBalance == 0)
             {
