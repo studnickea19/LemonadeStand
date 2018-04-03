@@ -68,6 +68,7 @@ namespace LemonadeStand
             if (demand >= 70)
             {
                 player.SellLemonade(player.pricePerCup);
+                player.cupsSold++;
             }
         }
 

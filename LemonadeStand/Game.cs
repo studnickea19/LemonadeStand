@@ -12,6 +12,7 @@ namespace LemonadeStand
         Player player;
         public Day day;
         Store store;
+        double spentBalance = 0;
 
         //CTOR__________________
         public Game()
@@ -35,10 +36,11 @@ namespace LemonadeStand
 
         public void PlayForDays(int daysOfPlay)
         {
+            double earnedBalance;
             for (int d = 1; d <= daysOfPlay; d++)
             {
                 RunGame();
-
+                earnedBalance = GetIncome(spentBalance);
             }
             player.wallet.GetFinalBalance(player.wallet.balance);
         }
@@ -63,6 +65,7 @@ namespace LemonadeStand
             store.GetCups();
             player.AddCups(store.cupQty, player.wallet);
             Message.DisplayMessage("New balance: $" + player.wallet.balance);
+            spentBalance = 20 - player.wallet.balance;
 
             //Player set recipe
             ShowRecipe();
@@ -70,18 +73,23 @@ namespace LemonadeStand
 
             //Player Set Price
             player.SetPrice();
+            player.inventory.GetNewPitcher(player.inventory.pitcher);
 
             //Create customers//demand
             int customerQty = day.GetCustomerQty();
             day.GenerateCustomer(customerQty);
             day.GetDemand();
 
-            //player.inventory.GetNewPitcher(player.inventory.pitcher);
+
 
             //Reset Ice
+            Message.DisplayMessage("Cups sold:" + player.cupsSold);
             MeltIce();
+            ResetCupsSold();
             ////Display earnings
             Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
+
+
 
             //TESTS //working
             //weather.DisplayTest();
@@ -113,6 +121,12 @@ namespace LemonadeStand
             player.inventory.icecubes.Clear();
             Message.DisplayMessage("Your remaining ice has melted.");
             return player.inventory.icecubes;
+        }
+
+        public int ResetCupsSold()
+        {
+            player.cupsSold = 0;
+            return player.cupsSold;
         }
 
         public void PlayAgain(string start)
@@ -157,6 +171,12 @@ namespace LemonadeStand
                 GetNewRecipe(player);
             }
 
+        }
+
+        public double GetIncome(double spentBalance)
+        {
+            double earnedBalance = player.wallet.balance - spentBalance;
+            return earnedBalance;
         }
 
     }

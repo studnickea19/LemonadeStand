@@ -11,6 +11,7 @@ namespace LemonadeStand
         public Inventory inventory;
         public Wallet wallet;
         public double pricePerCup;
+        public int cupsSold;
 
         public Player()
         {
@@ -116,6 +117,8 @@ namespace LemonadeStand
             wallet.balance += pricePerCup;
             return wallet.balance;
         }
+
+        //public void MakeNewPitcher 
 
     }
 }
