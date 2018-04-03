@@ -19,26 +19,49 @@ namespace LemonadeStand
         {
             Message.DisplayMessage("How many lemons would you like in your recipe?");
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            lemonQty = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+            if (check == true)
+            {
+                lemonQty = Int32.Parse(userInput);
+            }
+            else
+            {
+                return SetLemons();
+            }
+
             return lemonQty;
         }
 
         public int SetIce()
         {
-            Message.DisplayMessage("How much ice would you like in your recipe?");
+            Message.DisplayMessage("How much ice would you like per cup?");
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            iceQty = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+            if (check == true)
+            {
+                iceQty = Int32.Parse(userInput)*10; //10cups per pitcher
+            }
+
+            else
+            {
+                return SetIce();
+            }   
             return iceQty;
         }
 
         public int SetSugar()
         {
-            Message.DisplayMessage("How many cups of sugar would you like per cup?");
+            Message.DisplayMessage("How many cups of sugar would you like in your recipe?");
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
-            sugarQty = Int32.Parse(userInput);
+            bool check = Message.CheckIntegerInput(userInput);
+            if (check == true)
+            {
+                sugarQty = Int32.Parse(userInput);
+            }
+            else
+            {
+                return SetSugar();
+            }
             return sugarQty;
         }
 

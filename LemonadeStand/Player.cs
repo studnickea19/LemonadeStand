@@ -10,6 +10,7 @@ namespace LemonadeStand
         //HAS A
         public Inventory inventory;
         public Wallet wallet;
+        public double pricePerCup;
 
         public Player()
         {
@@ -120,13 +121,12 @@ namespace LemonadeStand
             }
         }
 
-        public double SetPrice()
+        public void SetPrice()
         {
             Message.DisplayMessage("How much would you like to charge per cup?");
             string userInput = Message.GetUserInput();
             //TO DO: VALIDATE
-            double pricePerCup = Double.Parse(userInput);
-            return pricePerCup;
+            pricePerCup = Double.Parse(userInput);
         }
 
         public double SellLemonade(double pricePerCup)

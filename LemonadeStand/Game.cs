@@ -21,7 +21,7 @@ namespace LemonadeStand
             player = new Player();
             day = new Day(rnd);
             store = new Store();
-            customer = new HighDemandCustomer();
+            customer = new HighDemandCustomer(player);
 
         }
 
@@ -60,10 +60,10 @@ namespace LemonadeStand
             Message.DisplayMessage("New balance: $" + player.wallet.balance);
 
             //Player set recipe
-            player.inventory.pitcher.ShowRecipe();
-            player.inventory.pitcher.GetNewRecipe();
+            ShowRecipe();
+            GetNewRecipe(player);
             //Player Set Price
-            double pricePerCup = player.SetPrice();
+            player.SetPrice();
             //player.inventory.GetNewPitcher(player.inventory.pitcher);
 
             //Create customers//demand
@@ -114,6 +114,33 @@ namespace LemonadeStand
             {
                 Console.WriteLine("Thanks for playing!");
             }
+        }
+
+        public void GetRecipe()
+        {
+            player.inventory.pitcher.SetLemons();
+            player.inventory.pitcher.SetSugar();
+            player.inventory.pitcher.SetIce();
+        }
+
+        public void ShowRecipe()
+        {
+            Message.DisplayMessage(String.Format("Your current recipe has {0} lemons, {1} cups of sugar, and {2} ice cubes", player.inventory.pitcher.lemonQty, player.inventory.pitcher.sugarQty, player.inventory.pitcher.iceQty));
+        }
+
+        public void GetNewRecipe(Player player)
+        {
+            Message.DisplayMessage("Would you like to change your recipe? YES or NO");
+            string userInput = Message.GetUserInput().ToLower();
+            if (userInput == "yes")
+            {
+                GetRecipe();
+            }
+            else
+            {
+                player.SetPrice();
+            }
+
         }
 
     }

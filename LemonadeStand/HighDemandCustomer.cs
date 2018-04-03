@@ -3,24 +3,23 @@ namespace LemonadeStand
 {
     public class HighDemandCustomer : Customer
     {
-        public HighDemandCustomer()
+        Player player;
+        public HighDemandCustomer(Player player)
         {
+            this.player = player;
             int demand = 90;
         }
 
         //CAN DO
         public override int DemandForTemperature(Weather weather, int demand)
         {
-            switch (weather.dailyTemperature)
+            if (weather.dailyTemperature > 60)
+            { 
+                demand -= 10; 
+            }
+            else if (weather.dailyTemperature < 70)
             {
-                case > 60:
-                    demand -= 10;
-                    break;
-                case < 70:
-                    demand += 20;
-                    break;
-                default:
-                    break;
+                demand += 20;
             }
             return demand;
         }
@@ -50,7 +49,7 @@ namespace LemonadeStand
 
         public override void BuyLemonade(Player player, int demand)
         {
-            if (demand >= 75)
+            if (demand >= 70)
             {
                 player.SellLemonade(player.pricePerCup);
             }
