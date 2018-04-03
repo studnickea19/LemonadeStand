@@ -22,7 +22,9 @@ namespace LemonadeStand
             day = new Day(rnd);
             store = new Store();
             customer = new HighDemandCustomer(player);
-
+            Console.WriteLine(customer.demand);
+            //customer = new MidDemandCustomer(player);
+            //customer = new LowDemandCustomer(player);
         }
 
         //CAN DO________________
@@ -52,26 +54,30 @@ namespace LemonadeStand
             Message.DisplayMessage(todaysWeather);
 
             //Player Fill inventory
-            store.GetItems();
-            player.AddIce(store.iceQty, player.wallet);
-            player.AddCups(store.cupQty, player.wallet);
-            player.AddSugar(store.sugarQty, player.wallet);
-            player.AddLemons(store.lemonQty, player.wallet);
-            Message.DisplayMessage("New balance: $" + player.wallet.balance);
+            //store.GetItems();
+            //player.AddIce(store.iceQty, player.wallet);
+            //player.AddCups(store.cupQty, player.wallet);
+            //player.AddSugar(store.sugarQty, player.wallet);
+            //player.AddLemons(store.lemonQty, player.wallet);
+            //Message.DisplayMessage("New balance: $" + player.wallet.balance);
 
-            //Player set recipe
-            ShowRecipe();
-            GetNewRecipe(player);
-            //Player Set Price
+            ////Player set recipe
+            //ShowRecipe();
+            //GetNewRecipe(player);
+            ////Player Set Price
             player.SetPrice();
-            //player.inventory.GetNewPitcher(player.inventory.pitcher);
+            customer.demand = customer.DemandForTemperature(day.weather, customer.demand); 
+            customer.demand = customer.DemandForConditions(day.weather, customer.demand);
+            customer.demand = customer.DemandForPrice(player, customer.demand);
+            Message.DisplayMessage("This Customer Demand: " + customer.demand);
+            ////player.inventory.GetNewPitcher(player.inventory.pitcher);
 
-            //Create customers//demand
-            //Increment budget
-            //Reset Ice
-            MeltIce();
-            //Display earnings
-            Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
+            ////Create customers//demand
+            ////Increment budget
+            ////Reset Ice
+            //MeltIce();
+            ////Display earnings
+            //Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
 
 
         
@@ -83,11 +89,14 @@ namespace LemonadeStand
             //Console.WriteLine(wallet.balance);
             //Console.WriteLine(player.inventory.cups.Count + player.inventory.icecubes.Count + player.inventory.lemons.Count + player.inventory.sugars.Count);
             //Console.WriteLine(player.inventory.cups.Count + player.inventory.icecubes.Count + player.inventory.lemons.Count + player.inventory.sugars.Count);
+
             //TEST INPUT
             //Console.WriteLine("Enter a number");
             //string userInput = Console.ReadLine();
             //bool isInteger = Message.CheckIntegerInput(userInput);
             //Console.WriteLine(isInteger);
+
+            //TEST CUSTOMER DEMAND
         }
 
 

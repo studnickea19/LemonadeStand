@@ -1,10 +1,13 @@
 ﻿using System;
 namespace LemonadeStand
 {
-    public class HighDemandCustomer : Customer
+    public class LowDemandCustomer : Customer
     {
+        //HAS A
         Player player;
-        public HighDemandCustomer(Player player)
+
+        //CTOR
+        public LowDemandCustomer(Player player)
         {
             this.player = player;
             this.demand = 100;
@@ -13,13 +16,13 @@ namespace LemonadeStand
         //CAN DO
         public override int DemandForTemperature(Weather weather, int demand)
         {
-            if (weather.dailyTemperature > 70)
-            { 
-                demand += 20; 
-            }
-            else if (weather.dailyTemperature < 60)
+            if (weather.dailyTemperature > 60)
             {
-                demand -= 10;
+                demand -= 30;
+            }
+            else if (weather.dailyTemperature < 75)
+            {
+                demand += 10;
             }
             return demand;
         }
@@ -29,13 +32,13 @@ namespace LemonadeStand
             switch (weather.dailyConditions)
             {
                 case "sunny":
-                    demand += 20;
+                    demand += 5;
                     break;
                 case "rainy":
-                    demand -= 10;
+                    demand -= 30;
                     break;
                 case "overcast":
-                    demand -= 5;
+                    demand -= 15;
                     break;
                 case "hazy":
                     demand += 10;
@@ -47,24 +50,29 @@ namespace LemonadeStand
         }
 
         public override int DemandForPrice(Player player, int demand)
-		{
-            if(player.pricePerCup > .3)
+        {
+            if (player.pricePerCup > .3)
             {
-                demand -= 10;
+                demand -= 20;
             }
-            else if(player.pricePerCup < .15)
+            else if (player.pricePerCup < .15)
             {
-                demand += 20;
+                demand += 10;
             }
             return demand;
-		}
+        }
 
-		public override void BuyLemonade(Player player, int demand)
+
+        public override void BuyLemonade(Player player, int demand)
         {
-            if (demand >= 75)
+            if (demand >= 70)
             {
                 player.SellLemonade(player.pricePerCup);
             }
         }
+
+
+
+
     }
 }
