@@ -15,7 +15,7 @@ namespace LemonadeStand
         public abstract int DemandForTemperature(Weather weather, int demand);
         public abstract int DemandForConditions(Weather weather, int demand);
         public abstract int DemandForPrice(Player player, int demand);
-        public abstract void BuyLemonade(Player player, int demand);
+        public abstract bool BuyLemonade(Player player, int demand);
 
     }
 }

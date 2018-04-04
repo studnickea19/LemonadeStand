@@ -26,15 +26,15 @@ namespace LemonadeStand
 
         public void GetNewPitcher(Pitcher pitcher)
         {
-            for (int i = 0; i <= pitcher.lemonQty; i++)
+            for (int i = 1; i <= pitcher.lemonQty; i++)
             {
                 lemons.RemoveAt(0);
             }
-            for (int i = 0; i <= pitcher.sugarQty; i++)
+            for (int i = 1; i <= pitcher.sugarQty; i++)
             {
                 sugars.RemoveAt(0);
             }
-            for (int i = 0; i <= pitcher.iceQty; i++)
+            for (int i = 1; i <= pitcher.iceQty; i++)
             {
                 icecubes.RemoveAt(0);
             }
@@ -53,6 +53,32 @@ namespace LemonadeStand
                 }
             }
 
+        }
+
+        public bool CheckInventory()
+        {
+            bool empty;
+            if(lemons.Count == 0)
+            {
+                empty = true;
+            }
+            else if(cups.Count == 0)
+            {
+                empty = true;
+            }
+            else if(icecubes.Count == 0)
+            {
+                empty = true;
+            }
+            else if(sugars.Count == 0)
+            {
+                empty = true;
+            }
+            else
+            {
+                empty = false;
+            }
+            return empty;
         }
     }
 }

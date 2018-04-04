@@ -79,6 +79,14 @@ namespace LemonadeStand
             int customerQty = day.GetCustomerQty();
             day.GenerateCustomer(customerQty);
             day.GetDemand();
+            bool buy = day.GetCustomerBuy();
+            Console.WriteLine(player.cupsSold);
+            player.inventory.CheckNewPitcher(player.cupsSold);
+            Console.WriteLine(player.cupsSold);
+            bool empty = player.inventory.CheckInventory();
+            Console.WriteLine(player.cupsSold);
+            bool endDay = player.CheckCanSell(empty, buy);
+            Console.WriteLine(player.cupsSold);
 
             //End day
             day.EndDay();
@@ -98,6 +106,9 @@ namespace LemonadeStand
             //Console.WriteLine(isInteger);
             //Message.DisplayMessage("This Customer Demand: " + customer.demand);
             //TEST CUSTOMER DEMAND
+
+
+             
         }
 
 

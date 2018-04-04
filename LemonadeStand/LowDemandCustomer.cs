@@ -63,13 +63,19 @@ namespace LemonadeStand
         }
 
 
-        public override void BuyLemonade(Player player, int demand)
+        public override bool BuyLemonade(Player player, int demand)
         {
-            if (demand >= 70)
+            bool buy;
+            if (demand >= 75)
             {
-                player.SellLemonade(player.pricePerCup);
+                buy = true;
                 player.cupsSold++;
             }
+            else
+            {
+                buy = false;
+            }
+            return buy;
         }
 
 

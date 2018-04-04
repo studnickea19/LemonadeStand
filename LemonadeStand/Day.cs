@@ -13,6 +13,7 @@ namespace LemonadeStand
         public Weather weather;
         public List<Customer> customers = new List<Customer>();
         public List<Customer> customerType = new List<Customer> ();
+        public bool buy;
 
         public Day(Random rnd, Player player)
         {
@@ -76,15 +77,25 @@ namespace LemonadeStand
 
         public void GetDemand()
         {
+            
             foreach(Customer customer in customers)
             {
                 customer.demand = customer.DemandForTemperature(weather, customer.demand);
                 customer.demand = customer.DemandForConditions(weather, customer.demand);
                 customer.demand = customer.DemandForPrice(player, customer.demand);
-                customer.BuyLemonade(player, customer.demand);
             }
-
         }
+
+        public bool GetCustomerBuy()
+        {
+            foreach(Customer customer in customers)
+            {
+                buy = customer.BuyLemonade(player, customer.demand);
+            }
+            return buy;
+        }
+
+
 
         public List<Ice> MeltIce()
         {

@@ -112,11 +112,34 @@ namespace LemonadeStand
             pricePerCup = Double.Parse(userInput);
         }
 
-        public double SellLemonade(double pricePerCup)
+        public double SellLemonade(double pricePerCup, bool buy, int cupsSold)
         {
-            wallet.balance += pricePerCup;
-            inventory.CheckNewPitcher(cupsSold);
+            if(buy == true)
+            {
+                wallet.balance += (pricePerCup * cupsSold);
+                inventory.CheckNewPitcher(cupsSold);
+                return wallet.balance; 
+            }
+            else
+            {
+                Message.DisplayMessage("You're out of supplies");
+            }
             return wallet.balance;
+        }
+
+        public bool CheckCanSell(bool empty, bool buy)
+        {
+            bool endDay;
+            if (empty == false)
+            {
+                SellLemonade(pricePerCup, buy, cupsSold);
+                endDay = false;
+            }
+            else
+            {
+                endDay = true;
+            }
+            return endDay;
         }
 
     }
