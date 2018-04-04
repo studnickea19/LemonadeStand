@@ -47,9 +47,9 @@ namespace LemonadeStand
             double price = 0;
             for (int i = 1; i <= lemonQty; i++)
             {
-                    Lemon lemon = new Lemon();
-                    inventory.lemons.Add(lemon);
-                    price += lemon.itemPrice;
+                Lemon lemon = new Lemon();
+                inventory.lemons.Add(lemon);
+                price += lemon.itemPrice;
             }
             CheckWallet(price, wallet);
         }
@@ -59,9 +59,9 @@ namespace LemonadeStand
             double price = 0;
             for (int i = 1; i <= cupQty; i++)
             {
-                    Cup cup = new Cup();
-                    inventory.cups.Add(cup);
-                    price += cup.itemPrice;
+                Cup cup = new Cup();
+                inventory.cups.Add(cup);
+                price += cup.itemPrice;
             }
             CheckWallet(price, wallet);
 
@@ -72,9 +72,9 @@ namespace LemonadeStand
             double price = 0;
             for (int i = 1; i <= sugarQty; i++)
             {
-                    Sugar sugar = new Sugar();
-                    inventory.sugars.Add(sugar);
-                    price += sugar.itemPrice;
+                Sugar sugar = new Sugar();
+                inventory.sugars.Add(sugar);
+                price += sugar.itemPrice;
             }
             CheckWallet(price, wallet);
         }
@@ -84,9 +84,9 @@ namespace LemonadeStand
             double price = 0;
             for (int i = 1; i <= iceQty; i++)
             {
-                    Ice ice = new Ice();
-                    inventory.icecubes.Add(ice);
-                    price += ice.itemPrice;
+                Ice ice = new Ice();
+                inventory.icecubes.Add(ice);
+                price += ice.itemPrice;
             }
             CheckWallet(price, wallet);
 
@@ -96,7 +96,7 @@ namespace LemonadeStand
         {
             if (price <= wallet.balance)
             {
-                wallet.SpendMoney(price); 
+                wallet.SpendMoney(price);
             }
             else
             {
@@ -115,11 +115,32 @@ namespace LemonadeStand
         public double SellLemonade(double pricePerCup)
         {
             wallet.balance += pricePerCup;
+            CheckNewPitcher(cupsSold);
             return wallet.balance;
         }
 
-        //public void MakeNewPitcher 
+        public void CheckNewPitcher(int cupsSold)
+        {
+            if(inventory.cups.Count == cupsSold)
+            {
+                Message.DisplayMessage("You're out of cups!");
+                EndDay();
+            }
 
+            else if(cupsSold != 0 && cupsSold%10 == 0)
+            {
+                Pitcher pitcher = new Pitcher();
+                inventory.GetNewPitcher(pitcher);
+                for (int i = 1; i <= 10; i++)
+                {
+                    inventory.cups.RemoveAt(0);
+                }
+            }
+            else
+            {
+                
+            }
+        }
     }
 }
 

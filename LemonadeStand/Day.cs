@@ -85,6 +85,29 @@ namespace LemonadeStand
             }
 
         }
+
+        public List<Ice> MeltIce()
+        {
+            player.inventory.icecubes.Clear();
+            Message.DisplayMessage("Your remaining ice has melted.");
+            return player.inventory.icecubes;
+        }
+
+        public int ResetCupsSold()
+        {
+            player.cupsSold = 0;
+            return player.cupsSold;
+        }
+
+        public void EndDay()
+        {
+            //Reset Ice
+            Message.DisplayMessage("Cups sold:" + player.cupsSold);
+            MeltIce();
+            ResetCupsSold();
+            ////Display earnings
+            Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
+        }
             
     }
 }

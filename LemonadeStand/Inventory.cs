@@ -24,26 +24,33 @@ namespace LemonadeStand
 
         //put get methods in store class
 
-        public void GetNewPitcher(Pitcher pitcher)
+        public void GetNewPitcher(Pitcher pitcher, Player player)
         {
-            for (int i = 1; i <= pitcher.lemonQty; i++)
+            for (int i = 0; i <= pitcher.lemonQty; i++)
             {
-                lemons.RemoveAt(0);
+                player.inventory.lemons.RemoveAt(0);
+                CheckInventory(player.inventory.lemons);
             }
-            for (int i = 1; i <= pitcher.sugarQty; i++)
+            for (int i = 0; i <= pitcher.sugarQty; i++)
             {
-                sugars.RemoveAt(0);
+                player.inventory.sugars.RemoveAt(0);
+                CheckInventory(player.inventory.lemons);
             }
-            for (int i = 1; i <= pitcher.iceQty; i++)
+            for (int i = 0; i <= pitcher.iceQty; i++)
             {
-                icecubes.RemoveAt(0);
+                player.inventory.icecubes.RemoveAt(0);
+                CheckInventory(player.inventory.lemons);
             }
+
         }
 
-
-
-
-
+        public void CheckInventory(List<Item> listName)
+        {
+            if (listName.Count == 0)
+            {
+                EndDay();
+            }
+        }
 
     }
 }

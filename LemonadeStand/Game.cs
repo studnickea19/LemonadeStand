@@ -73,23 +73,15 @@ namespace LemonadeStand
 
             //Player Set Price
             player.SetPrice();
-            player.inventory.GetNewPitcher(player.inventory.pitcher);
+            player.inventory.GetNewPitcher(player.inventory.pitcher, player);
 
             //Create customers//demand
             int customerQty = day.GetCustomerQty();
             day.GenerateCustomer(customerQty);
             day.GetDemand();
 
-
-
-            //Reset Ice
-            Message.DisplayMessage("Cups sold:" + player.cupsSold);
-            MeltIce();
-            ResetCupsSold();
-            ////Display earnings
-            Message.DisplayMessage("Your new balance is: $" + player.wallet.balance);
-
-
+            //End day
+            day.EndDay();
 
             //TESTS //working
             //weather.DisplayTest();
@@ -114,19 +106,6 @@ namespace LemonadeStand
             day.GetDailyWeather(conditions);
             string todaysWeather = "Today's Forecast:\n Temperature:" + day.weather.dailyTemperature + "\n Conditions:" + day.weather.dailyConditions;
             return todaysWeather;
-        }
-
-        public List<Ice> MeltIce()
-        {
-            player.inventory.icecubes.Clear();
-            Message.DisplayMessage("Your remaining ice has melted.");
-            return player.inventory.icecubes;
-        }
-
-        public int ResetCupsSold()
-        {
-            player.cupsSold = 0;
-            return player.cupsSold;
         }
 
         public void PlayAgain(string start)
