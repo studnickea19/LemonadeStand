@@ -73,7 +73,7 @@ namespace LemonadeStand
 
             //Player Set Price
             player.SetPrice();
-            player.inventory.GetNewPitcher(player.inventory.pitcher, player);
+            player.inventory.GetNewPitcher(player.inventory.pitcher);
 
             //Create customers//demand
             int customerQty = day.GetCustomerQty();

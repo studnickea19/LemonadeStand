@@ -14,7 +14,6 @@ namespace LemonadeStand
         }
 
 
-
         public int SetLemons()
         {
             Message.DisplayMessage("How many lemons would you like in your recipe?");
@@ -64,10 +63,7 @@ namespace LemonadeStand
             }
             return sugarQty;
         }
-
-
     }
 }
-
 
 

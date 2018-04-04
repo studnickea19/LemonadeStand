@@ -115,32 +115,10 @@ namespace LemonadeStand
         public double SellLemonade(double pricePerCup)
         {
             wallet.balance += pricePerCup;
-            CheckNewPitcher(cupsSold);
+            inventory.CheckNewPitcher(cupsSold);
             return wallet.balance;
         }
 
-        public void CheckNewPitcher(int cupsSold)
-        {
-            if(inventory.cups.Count == cupsSold)
-            {
-                Message.DisplayMessage("You're out of cups!");
-                EndDay();
-            }
-
-            else if(cupsSold != 0 && cupsSold%10 == 0)
-            {
-                Pitcher pitcher = new Pitcher();
-                inventory.GetNewPitcher(pitcher);
-                for (int i = 1; i <= 10; i++)
-                {
-                    inventory.cups.RemoveAt(0);
-                }
-            }
-            else
-            {
-                
-            }
-        }
     }
 }
 
