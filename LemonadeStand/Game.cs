@@ -18,7 +18,7 @@ namespace LemonadeStand
         public Game()
         {
             rnd = new Random();
-            player = new Player();
+            player = new Player(store);
             day = new Day(rnd, player);
             store = new Store(player);
         }
@@ -80,13 +80,11 @@ namespace LemonadeStand
             day.GenerateCustomer(customerQty);
             day.GetDemand();
             bool buy = day.GetCustomerBuy();
-            Console.WriteLine(player.cupsSold);
             player.inventory.CheckNewPitcher(player.cupsSold);
-            Console.WriteLine(player.cupsSold);
             bool empty = player.inventory.CheckInventory();
-            Console.WriteLine(player.cupsSold);
             bool endDay = player.CheckCanSell(empty, buy);
-            Console.WriteLine(player.cupsSold);
+
+
 
             //End day
             day.EndDay();

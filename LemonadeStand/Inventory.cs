@@ -43,16 +43,22 @@ namespace LemonadeStand
 
         public void CheckNewPitcher(int cupsSold)
         {
-            if (cupsSold != 0 && cupsSold % 10 == 0)
+            for(int i = 1; i <= cupsSold; i++)
             {
-                Pitcher pitcher = new Pitcher();
-                GetNewPitcher(pitcher);
-                for (int i = 1; i <= 10; i++)
+                if(cupsSold%10 == 0)
                 {
-                    cups.RemoveAt(0);
+                    Pitcher pitcher = new Pitcher();
+                    GetNewPitcher(pitcher);
+                    for (int x = 1; x <= 10; x++)
+                    {
+                        cups.RemoveAt(0);
+                    }
+                }
+                else
+                {
+                    break;
                 }
             }
-
         }
 
         public bool CheckInventory()

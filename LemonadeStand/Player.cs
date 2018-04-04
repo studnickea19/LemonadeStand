@@ -10,13 +10,15 @@ namespace LemonadeStand
         //HAS A
         public Inventory inventory;
         public Wallet wallet;
+        public Store store;
         public double pricePerCup;
         public int cupsSold;
 
-        public Player()
+        public Player(Store store)
         {
             inventory = new Inventory();
             wallet = new Wallet();
+            this.store = store;
         }
 
         //CAN DO
@@ -100,7 +102,7 @@ namespace LemonadeStand
             }
             else
             {
-                Message.DisplayMessage("You don't have enough money! Remaining balace: " + wallet.balance);
+                Message.DisplayMessage("You don't have enough money! Remaining balace: $" + wallet.balance);
             }
         }
 
@@ -108,7 +110,7 @@ namespace LemonadeStand
         {
             Message.DisplayMessage("How much would you like to charge per cup?");
             string userInput = Message.GetUserInput();
-            //TO DO: VALIDATE
+            //TO DO: VALIDATE DOUBLE
             pricePerCup = Double.Parse(userInput);
         }
 
@@ -119,10 +121,6 @@ namespace LemonadeStand
                 wallet.balance += (pricePerCup * cupsSold);
                 inventory.CheckNewPitcher(cupsSold);
                 return wallet.balance; 
-            }
-            else
-            {
-                Message.DisplayMessage("You're out of supplies");
             }
             return wallet.balance;
         }
@@ -137,6 +135,7 @@ namespace LemonadeStand
             }
             else
             {
+                Message.DisplayMessage("You're out of supplies");
                 endDay = true;
             }
             return endDay;
